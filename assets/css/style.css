@@ -1,3 +1,76 @@
 .hide {
     display: none;
 }
+
+h1, h2 {
+    text-shadow: 1px 1px black;
+    margin-left: 10px;
+}
+
+body {
+    background-image: url("../images/bodybg.jpg");
+}
+
+ul {
+    height: 190px;
+    padding: 10px 0px;
+    list-style: none;
+    background-color: rgba(185, 185, 185, 0.4);
+}
+
+li {
+    text-shadow: 1px 1px black;
+    color: orange;
+  display: block;
+  margin-left: 25%;
+  margin-bottom: 10px;
+  width: 500px;
+  text-align: center;
+}
+
+#start {
+    margin-left: 50%;
+}
+
+p {
+    text-align: center;
+}
+
+li:hover {
+    background-color: steelblue;
+    color: white;
+    border: 1px solid yellow;
+    margin-bottom: 9px;
+}
+
+.gameDiv {
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    height: 700px;
+    background-image: url("../images/bg.jpg");
+    background-position: center bottom;
+    color: white;
+}
+
+.theAnswer {
+    width: 100%;
+}
+
+.theAnswer img {
+    margin-left: 30%;
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.trivia {
+    background-color: rgba(83, 97, 158, 0.4);
+}
+
+.head {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.tally {
+    text-align: center;
+}

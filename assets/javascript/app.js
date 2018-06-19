@@ -12,6 +12,7 @@ var qLocDiv = (".qLoc")
 // Trivia Questions
 var q1 = {
     question:"Which game Is NOT a title developed by From Software?",
+    correctIMG: "assets/images/front.jpg",
     answers: [
     "Dark Souls",
     "Front Mission",
@@ -21,25 +22,29 @@ var q1 = {
     correctA : 1
 }
 var q2 = {
-    question:"There are how many different pieces in Tetris?",
+    question:
+    "What is the name of the psycological effect occurs when people devote so much time and attention to an activity that it begins to pattern their thoughts, mental images, and dreams?",
+    correctIMG: "assets/images/effect.png",
     answers: [
-    "7",
-    "5",
-    "4", 
-    "6"],
+    "The Tetris Effect",
+    "Pattern Psychosis",
+    "Neuropsychosis", 
+    "Jumpman"],
     correctA : 0
 }
 var q3 = {
     question:"Which Mario game first introduced the Poison Mushroom Powerup?",
+    correctIMG: "assets/images/poison.png",
     answers: [
     "Super Mario World",
     "Super Mario Bros. 2",
-    "Super Mario Bros.: The Lost Levels", 
+    "Super Mario Bros. The Lost Levels", 
     "Super Mario RPG"],
     correctA : 2
 }
 var q4 = {
     question:"This Character is Mario's main antagonist.",
+    correctIMG: "assets/images/bowser.png",
     answers: [
     "Bowser",
     "Luigi",
@@ -49,6 +54,7 @@ var q4 = {
 }
 var q5 = {
     question:"The name of the giant robots in Respawn Interactive's 'Titanfall' are called what?",
+    correctIMG: "assets/images/titan.gif",
     answers: [
     "Wanzers",
     "Ravens",
@@ -58,6 +64,7 @@ var q5 = {
 }
 var q6 = {
     question:"What's the name of Sonic's fox sidekick?",
+    correctIMG: "assets/images/tails.png",
     answers: [
     "Flyboy",
     "Luigi",
@@ -67,15 +74,17 @@ var q6 = {
 }
 var q7 = {
     question:"Who is known as the 'Father of all Video Games?'",
+    correctIMG: "assets/images/ralph.jpg",
     answers: [
     "Nolan Bushnell",
     "Bill Gates",
     "Shigeru Miyamoto", 
     "Ralph H. Baer"],
-    correctA : 0
+    correctA : 3
 }
 var q8 = {
     question:"Which of the following is NOT a character in the Metal Gear Solid Series",
+    correctIMG: "assets/images/snakes.jpg",
     answers: [
     "Liquid Snake",
     "Plasma Snake",
@@ -83,7 +92,6 @@ var q8 = {
     "Solidus Snake"],
     correctA : 1
 }
-
 
 //array for trivia questions 
 var trivia = [q1,q2,q3,q4,q5,q6,q7,q8];
@@ -97,14 +105,16 @@ function checkAnswer(){
         correctCount++;
         clearInterval(timer);
         $(qLocDiv).empty();
-        $(".theAnswer").text("Correct! " + trivia[questionNum].answers[trivia[questionNum].correctA] + " is the Answer!");
+        $(".theAnswer").append("<p>Correct! " + trivia[questionNum].answers[trivia[questionNum].correctA] + " is the Answer!</p>");
+        $(".theAnswer").append("<img src='"+ trivia[questionNum].correctIMG + "' class='img-fluid' />" )
         qChange = setTimeout(questionChange, 3000)
     }
     else {
         incorrectCount++;
         clearInterval(timer);
         $(qLocDiv).empty();
-        $(".theAnswer").text("Incorrect! " + trivia[questionNum].answers[trivia[questionNum].correctA] + " was the answer!");
+        $(".theAnswer").html("<p>Incorrect! " + trivia[questionNum].answers[trivia[questionNum].correctA] + " was the answer!</p>");
+        $(".theAnswer").append("<img src='"+ trivia[questionNum].correctIMG + "' class='img-fluid' />" )
         qChange = setTimeout(questionChange,3000);
     }
     
@@ -115,9 +125,11 @@ function countdown(){
     time--
     $("#time").text(time);
         if (time === 0) {
+            incorrectCount--;
             clearInterval(timer);
             $(qLocDiv).empty();
-            $(".theAnswer").text("Time's up! Sorry but the answer was: " + trivia[questionNum].answers[trivia[questionNum].correctA]);
+            $(".theAnswer").html("<p>Time's up! Sorry but the answer was: " + trivia[questionNum].answers[trivia[questionNum].correctA] + "</p>");
+            $(".theAnswer").append("<img src='"+ trivia[questionNum].correctIMG + "' class='img-fluid' />" )
             qChange = setTimeout(questionChange, 3000);
         }
 }
@@ -146,7 +158,7 @@ function displayQuestion(questionLoc){
     var qText = $("<h1>");
     qText.text(questionLoc.question);
     var answersUL = $("<ul>");
-    for(i= 0; i < questionLoc.answers.length; i++){
+    for(var i= 0; i < questionLoc.answers.length; i++){
         answersLI = $("<li>");
         answersLI.text(questionLoc.answers[i]).attr("id", i).attr("class","ans");
         answersUL.append(answersLI);
@@ -158,18 +170,21 @@ function displayQuestion(questionLoc){
 //function to display final tally when game is done.
 function finalTally(){
     questionNum = 0;
+    $(".quesNumb").empty();
     var tallyDiv = $(qLocDiv);
 
-        if (correctCount > incorrectCount){
-        var goodJob = $("<p>");
-        goodJob.text("Well Done!")
-        tallyDiv.append(goodJob);
+        if (correctCount === trivia.length){
+        tallyDiv.append("<h1 class='tally'>You aced the trivia! You're a real trivia pro!</h1>")
+        }
+
+        else if (correctCount > incorrectCount){
+        tallyDiv.append("<h1 class='tally'>Well Done!</h1>");
+        tallyDiv.append("<p>You got " + correctCount +" answers correct and only missed " + incorrectCount + " questions!</p>")
         }
 
         else {
-            var badJob = $("<p>");
-        badJob.text("Brush up your skills and take it again!")
-        tallyDiv.append(badJob);
+        tallyDiv.append("<p>You got " + correctCount + "questions correct and missed " + incorrectCount + " questions</p>")
+        tallyDiv.append("<h1 class='tally'>Brush up your knowledge and take it again?</h1>");
         }
     
     $("#start").text("Try Again?").removeClass("hide")

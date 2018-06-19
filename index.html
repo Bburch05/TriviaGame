@@ -10,18 +10,27 @@
   <body>
       <div class="container">
           <div class="row">
-              <div class="col-md-12">
-                <h1>Video Game Trivia!</h1>
+              <div class="col-md-12 gameDiv">
+                <h1 class="head">Video Game Trivia!</h1>
                 <br>
-                <h4>Time Left: <span id="time">30</span> seconds</h4>
+                
                 <div class="trivia">
-                    <h2 class="quesNumb"></h2>
-                    <h4 class="theAnswer"></h4>
-                    <div class="qLoc">
-                        <p>
-                        Welcome to Video Game Trivia! Press the start button to begin!
-                        </p>
+                    <div class="row">
+                        
+                            <div class="col-md-6">
+                            <h2 class="quesNumb"></h2>
+                            </div>
+
+                            <div class="col-md-4 offset-md-2">
+                            <h2>Time Left: <span id="time">30</span> seconds</h2>
+                            </div>
                     </div>
+                        <h4 class="theAnswer"></h4>
+                        <div class="qLoc">
+                            <p>
+                            Welcome to Video Game Trivia! Press the start button to begin!
+                            </p>
+                        </div>
                 </div>
                 <button id="start" class='btn'>Start!</button>
                 </ul>
