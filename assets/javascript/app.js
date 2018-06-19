@@ -183,7 +183,7 @@ function finalTally(){
         }
 
         else {
-        tallyDiv.append("<p>You got " + correctCount + "questions correct and missed " + incorrectCount + " questions</p>")
+        tallyDiv.append("<p>You got " + correctCount + " questions correct and missed " + incorrectCount + " questions</p>")
         tallyDiv.append("<h1 class='tally'>Brush up your knowledge and take it again?</h1>");
         }
     
