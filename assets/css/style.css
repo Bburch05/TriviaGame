@@ -7,6 +7,10 @@ h1, h2 {
     margin-left: 10px;
 }
 
+h2 {
+    color: orange;
+}
+
 body {
     background-image: url("../images/bodybg.jpg");
 }
@@ -48,6 +52,7 @@ li:hover {
     border-right: 5px solid black;
     height: 700px;
     background-image: url("../images/bg.jpg");
+    background-repeat: repeat;
     background-position: center bottom;
     color: white;
 }
@@ -62,10 +67,6 @@ li:hover {
     max-height: 50%;
 }
 
-.trivia {
-    background-color: rgba(83, 97, 158, 0.4);
-}
-
 .head {
     text-align: center;
     margin-top: 20px;
@@ -73,4 +74,12 @@ li:hover {
 
 .tally {
     text-align: center;
+}
+
+.qLoc {
+    padding-bottom: 10px;
+}
+
+.quesNumb {
+    border-bottom: 3px solid white;
 }
